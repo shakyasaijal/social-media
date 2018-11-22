@@ -16,10 +16,7 @@
           Echo.join('online').listenForWhisper('typing',(e)=>{
               this_.typing = e.typing;
               this_.typingMessage = e.text;
-              console.log(e.typing);
-              setTimeout(function(){
-                  this_.typing = false;
-              },1500);
+              
           });
         },
         methods:{
@@ -32,13 +29,7 @@
                         friend_id:friend_id,
                         message:this.message
                     };
-                    axios.post('/api/store-message',data).then(response=>{
-                        this.$eventBus.$emit('message',response.data.message);
-                        this.message = "";
-                    }).catch(error=>{
-                        //handle error here
-                    });
-                    //console.log(data);
+                    
 
                 }
             },
